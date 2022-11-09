@@ -1,0 +1,33 @@
+.modal-backdrop {
+    background: rgb(0 0 0 / 5%);
+    ;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(6.5px);
+    -webkit-backdrop-filter: blur(6.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.modal-child {
+    position: "fixed";
+    top: "50%";
+    display: flex;
+    flex-direction: column;
+    color: rgb(16, 26, 35);
+    left: "50%";
+    transform: "translate(-50%, -50%)";
+    border-radius: 19px;
+    background: linear-gradient(145deg, #ffffff, #e2e2e2);
+    box-shadow: inset -8px -8px 12px 0px #c0c0c3, inset 8px 8px 10px 0px #ffffff, 10px 9px 9px 0px #1c1d2259;
+    z-index: 1000;
+}
+
+.modal-well {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+}

@@ -1,0 +1,26 @@
+.mid-board {
+    background-color: #e9eef7;
+    box-shadow: 0px 0px 20px 20px #03021457;
+    width: 800px;
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.board-content {
+    padding-bottom: 30px;
+}
+
+.board-header {
+    color: #1a1a1a;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 50px 0px 20px 0px;
+}
+
+.container-landing-page {
+    background-color: #e9eef7;
+    box-shadow: 0px 0px 20px 20px #03021457;
+    width: auto;
+    border-radius: 15px;
+    padding: 50px;
+}
