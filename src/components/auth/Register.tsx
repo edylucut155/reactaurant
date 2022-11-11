@@ -15,7 +15,7 @@ const Register: FC<{ setModalOpen: Dispatch<SetStateAction<AuthModals>>; }> = ({
             console.log(target);
             const email = target.email.value;
             const password = target.password.value;
-            const name = target["name"].value;
+            const userName = target.userName.value;
             const phoneNumber = target.phoneNumber.value;
             const userType = target["user-type-radio"].value;
             // Custom validation
@@ -50,8 +50,8 @@ const Register: FC<{ setModalOpen: Dispatch<SetStateAction<AuthModals>>; }> = ({
                     <i className="fa-solid fa-user bg-secondary"></i>
                     <input
                         className="style-input"
-                        name="name"
-                        id="name"
+                        name="userName"
+                        id="userName"
                         placeholder="Your Name"
                     />
                 </div>
