@@ -2,10 +2,14 @@ import React, { FC, SyntheticEvent, Dispatch, SetStateAction } from "react";
 import { AuthModals } from "./types";
 import { UserTypes } from "./types";
 import './auth-styles.css';
+import { useUserAuth } from "../../contexts/AuthContext";
 
 const Register: FC<{ setModalOpen: Dispatch<SetStateAction<AuthModals>>; }> = ({
     setModalOpen,
 }) => {
+
+    const { signUp } = useUserAuth();
+
     const onSubmit = async (e: SyntheticEvent) => {
         try {
             e.preventDefault();
@@ -18,6 +22,7 @@ const Register: FC<{ setModalOpen: Dispatch<SetStateAction<AuthModals>>; }> = ({
             const name = target["name"].value;
             const phoneNumber = target.phoneNumber.value;
             const userType = target["user-type-radio"].value;
+            await signUp(email,password,phoneNumber,name,userType);
             // Custom validation
             if (password.length < 5) {
                 alert('Password is too short');
