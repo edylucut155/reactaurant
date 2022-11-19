@@ -6,6 +6,7 @@ import useUserDetails from "../../hooks/UserDetailsHook";
 import { whereQuery } from "../../configs/firebase/actions";
 import { useNavigate } from "react-router-dom";
 import { PagesPaths } from "../../pages/types";
+import { ToastVariants, useToast } from "../../contexts/ToastContext";
 
 const SignIn: FC<{ setModalOpen: Dispatch<SetStateAction<AuthModals>>; }> = ({
     setModalOpen,
@@ -14,6 +15,7 @@ const SignIn: FC<{ setModalOpen: Dispatch<SetStateAction<AuthModals>>; }> = ({
     const { logIn } = useUserAuth();
     const { storeCurrentUserDetails } = useUserDetails();
     const navigate = useNavigate();
+    const { enqueueToast } = useToast();
 
     const onSubmit = async (e: SyntheticEvent) => {
         try {
@@ -32,9 +34,20 @@ const SignIn: FC<{ setModalOpen: Dispatch<SetStateAction<AuthModals>>; }> = ({
             storeCurrentUserDetails(usersQueryResults[0] as unknown as User);
             setModalOpen(AuthModals.CLOSED);
             navigate(PagesPaths.DASHBOARD);
+            enqueueToast({
+                id:"loginSuccessToast",
+                message:'Signed in successfully',
+                variant:ToastVariants.SUCCESS
+            })
         } catch (err) {
+            setModalOpen(AuthModals.CLOSED);
             console.error(err);
-            alert(err);
+            enqueueToast({
+                id:"loginErrorToast",
+                message:'Could not sign in',
+                variant:ToastVariants.ERROR
+            });
+            setModalOpen(AuthModals.CLOSED);
         }
 
     };

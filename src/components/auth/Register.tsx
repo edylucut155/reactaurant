@@ -3,12 +3,14 @@ import { AuthModals } from "./types";
 import { UserTypes } from "./types";
 import './auth-styles.css';
 import { useUserAuth } from "../../contexts/AuthContext";
+import { ToastVariants, useToast } from "../../contexts/ToastContext";
 
 const Register: FC<{ setModalOpen: Dispatch<SetStateAction<AuthModals>>; }> = ({
     setModalOpen,
 }) => {
 
     const { signUp } = useUserAuth();
+    const { enqueueToast } = useToast();
 
     const onSubmit = async (e: SyntheticEvent) => {
         try {
@@ -25,14 +27,26 @@ const Register: FC<{ setModalOpen: Dispatch<SetStateAction<AuthModals>>; }> = ({
             await signUp(email,password,phoneNumber,name,userType);
             // Custom validation
             if (password.length < 5) {
-                alert('Password is too short');
+                enqueueToast({
+                    message: "Could not register",
+                    id: "passLengthErrorToast",
+                    variant: ToastVariants.ERROR
+                })
                 return;
             }
             setModalOpen(AuthModals.CLOSED);
-            alert('Registered succesfully');
+            enqueueToast({
+                message: "Registered successfully",
+                id: "registerSuccessToast",
+                variant: ToastVariants.SUCCESS
+            })
         } catch (err) {
             console.error(err);
-            alert(err);
+            enqueueToast({
+                message: "Could not register",
+                id: "registerErrorToast",
+                variant: ToastVariants.ERROR
+            })
         }
     };
     return (
