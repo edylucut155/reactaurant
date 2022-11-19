@@ -3,12 +3,14 @@ import { AuthModals } from "./types";
 import { UserTypes } from "./types";
 import './auth-styles.css';
 import { useUserAuth } from "../../contexts/AuthContext";
+import useSnackBar ,{VariantType} from "../../hooks/UseSnackBar";
 
 const Register: FC<{ setModalOpen: Dispatch<SetStateAction<AuthModals>>; }> = ({
     setModalOpen,
 }) => {
 
     const { signUp } = useUserAuth();
+    const enqueueSnackBar = useSnackBar();
 
     const onSubmit = async (e: SyntheticEvent) => {
         try {
@@ -25,14 +27,14 @@ const Register: FC<{ setModalOpen: Dispatch<SetStateAction<AuthModals>>; }> = ({
             await signUp(email,password,phoneNumber,name,userType);
             // Custom validation
             if (password.length < 5) {
-                alert('Password is too short');
+                enqueueSnackBar("The password is too short",VariantType.ERROR);
                 return;
             }
             setModalOpen(AuthModals.CLOSED);
-            alert('Registered succesfully');
+            enqueueSnackBar("You registered successfully",VariantType.SUCCESS);
         } catch (err) {
             console.error(err);
-            alert(err);
+            enqueueSnackBar("Could not register",VariantType.ERROR);
         }
     };
     return (

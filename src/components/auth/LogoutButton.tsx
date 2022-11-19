@@ -2,19 +2,21 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserAuth } from "../../contexts/AuthContext";
 import { PagesPaths } from "../../pages/types";
+import useSnackBar ,{VariantType} from "../../hooks/UseSnackBar";
 
 const LogoutButton = () => {
     const { logOut } = useUserAuth();
     const navigate  = useNavigate();
+    const enqueueSnackBar = useSnackBar();
 
     const logOutHandler =  async() => {
         try{
             await logOut();
             navigate(PagesPaths.LANDING);
-            alert("Logged out successfully")
+            enqueueSnackBar("You logged out successfully",VariantType.SUCCESS);
         }catch(err){
             alert('couldnt log out');
-            console.log(err)
+            enqueueSnackBar("Could not log out",VariantType.ERROR);
         }
     }
 

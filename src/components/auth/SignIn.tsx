@@ -3,6 +3,7 @@ import { AuthModals, User } from "./types";
 import './auth-styles.css';
 import { useUserAuth } from "../../contexts/AuthContext";
 import useUserDetails from "../../hooks/UserDetailsHook";
+import useSnackBar ,{VariantType} from "../../hooks/UseSnackBar";
 import { whereQuery } from "../../configs/firebase/actions";
 import { useNavigate } from "react-router-dom";
 import { PagesPaths } from "../../pages/types";
@@ -14,6 +15,7 @@ const SignIn: FC<{ setModalOpen: Dispatch<SetStateAction<AuthModals>>; }> = ({
     const { logIn } = useUserAuth();
     const { storeCurrentUserDetails } = useUserDetails();
     const navigate = useNavigate();
+    const enqueueSnackBar = useSnackBar();
 
     const onSubmit = async (e: SyntheticEvent) => {
         try {
@@ -32,9 +34,10 @@ const SignIn: FC<{ setModalOpen: Dispatch<SetStateAction<AuthModals>>; }> = ({
             storeCurrentUserDetails(usersQueryResults[0] as unknown as User);
             setModalOpen(AuthModals.CLOSED);
             navigate(PagesPaths.DASHBOARD);
+            enqueueSnackBar("Logged in successfully",VariantType.SUCCESS);
         } catch (err) {
             console.error(err);
-            alert(err);
+            enqueueSnackBar("Could not log in. Check your credentials or try again later",VariantType.ERROR);
         }
 
     };
