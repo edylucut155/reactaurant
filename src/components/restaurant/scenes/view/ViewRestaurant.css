@@ -1,0 +1,26 @@
+.information-style {
+  border-bottom: 1px solid gray;
+}
+
+.container-information {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+
+.container-image {
+  width: 100%;
+  height: 300px;
+}
+
+.image-restaurant {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text-black {
+  color: black;
+}

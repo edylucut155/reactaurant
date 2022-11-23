@@ -139,10 +139,12 @@ input:focus {
 }
 
 .btn-grad {
-  background-image: linear-gradient(to right,
-      #02aab0 0%,
-      #00cdac 51%,
-      #02aab0 100%);
+  background-image: linear-gradient(
+    to right,
+    #02aab0 0%,
+    #00cdac 51%,
+    #02aab0 100%
+  );
   margin: 10px;
   text-align: center;
   transition: 0.5s;
@@ -181,6 +183,7 @@ input[type="file"] {
   display: inline-block;
   padding: 6px 12px;
   cursor: pointer;
+  color: black;
 }
 
 .bg-secondary {
@@ -193,4 +196,16 @@ input[type="file"] {
 
 .btn-close {
   width: 20px !important;
+}
+
+.mt-0 {
+  margin-top: 0px;
+}
+
+.mb-0 {
+  margin-bottom: 0px;
+}
+
+.m-0 {
+  margin: 0px;
 }
