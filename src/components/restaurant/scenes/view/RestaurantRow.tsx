@@ -12,7 +12,7 @@ const RestaurantRow = (props: {
     <div className="container-restaurant mt-10">
       <LandingImage />
       <h2 className="title-style">{props.name}</h2>
-      <p>{props.shortDescription}</p>
+      <p className="title-style">{props.shortDescription}</p>
       <div className="d-flex">
         <NavigateButton path={`/${PagesPaths.RESTAURANT}/${props.id}`}>
           View

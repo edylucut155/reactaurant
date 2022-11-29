@@ -6,13 +6,14 @@
 
   color-scheme: light dark;
   color: #ffffffde;
-  background-color: #f2f4f6;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+html {
+  background-color: #f2f4f6;
 }
 
 a {
@@ -133,9 +134,9 @@ input:focus {
   align-items: center;
   width: 16px;
   height: 10px;
-  position: absolute;
-  left: 210px;
+  position: relative;
   top: 5px;
+  margin-left: 80% !important;
 }
 
 .btn-grad {
@@ -145,7 +146,6 @@ input:focus {
     #00cdac 51%,
     #02aab0 100%
   );
-  margin: 10px;
   text-align: center;
   transition: 0.5s;
   background-size: 200% auto;

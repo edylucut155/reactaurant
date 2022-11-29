@@ -1,0 +1,24 @@
+.btn-controls {
+  background-image: linear-gradient(
+    to right,
+    #02aab0 0%,
+    #00cdac 51%,
+    #02aab0 100%
+  );
+  text-align: center;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 16px;
+  width: 150px;
+}

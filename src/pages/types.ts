@@ -7,4 +7,5 @@ export enum PagesPaths {
   EDIT_RESTAURANT = "edit-restaurant",
   RESTAURANT = "restaurant",
   RESTAURANTS = "restaurants",
+  MANAGE_MENU="restaurant/:id/manage-menu"
 }

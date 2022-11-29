@@ -8,6 +8,7 @@ import {
   where,
   doc,
   setDoc,
+  deleteDoc,
 } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { db, storage } from ".";
@@ -82,3 +83,7 @@ export const getAll = async (collectionName: string) => {
     return results;
   });
 };
+
+export const remove = async (collectionName: string, documentId: string) => {
+  return deleteDoc(doc(db, collectionName, documentId));
+}
