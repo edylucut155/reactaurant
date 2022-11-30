@@ -1,5 +1,5 @@
 import { DocumentData } from "firebase/firestore";
-import React, { MouseEventHandler, SyntheticEvent, useState } from "react";
+import React, { ChangeEvent, MouseEventHandler, SyntheticEvent, useEffect, useState } from "react";
 import { upload } from "../../../configs/firebase/actions";
 import Input from "../../../lib/form/Input";
 import TextArea from "../../../lib/form/TextArea";
@@ -14,6 +14,7 @@ export interface formDataInterface {
   address: string;
   phone: string;
   email: string;
+  temporaryClosed?: boolean;
   imageRef: string;
 }
 
@@ -27,6 +28,17 @@ const RestaurantForm = (props: {
   const [saving, setSaving] = useState(false);
   const { restaurant } = props;
   const [photo, setPhoto] = useState<File | null>(null);
+  const [isTemporaryClosed, setIsTemporaryClosed] = useState(false);
+  
+  useEffect(() => {
+    if (restaurant) {
+      setIsTemporaryClosed(restaurant.temporaryClosed);
+    }
+  }, []);
+
+  const onChangeTemporaryClosed = (e: ChangeEvent<HTMLInputElement>) => {
+    setIsTemporaryClosed(!isTemporaryClosed);
+  };
 
   const photoChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPhoto(event?.target?.files?.[0] || null);
@@ -45,6 +57,7 @@ const RestaurantForm = (props: {
     const closesAt = target.closesAt.value;
     const phone = target.phone.value;
     const email = target.email.value;
+    const temporaryClosed = isTemporaryClosed;
     if (
       !(
         name &&
@@ -70,6 +83,7 @@ const RestaurantForm = (props: {
       closesAt,
       phone,
       email,
+      temporaryClosed
     };
 
     if (photo) {
@@ -135,6 +149,25 @@ const RestaurantForm = (props: {
               value={restaurant?.email || ""}
               name="email"
             ></Input>
+            {restaurant && (
+              <div className="mt-10 d-flex">
+                <div className="d-flex w-100">
+                  <label
+                    htmlFor="temporaryClosed"
+                    className="mr-10 label-style"
+                  >
+                    Temporary Closed
+                  </label>
+                </div>
+                <input
+                  className="style-input w-300"
+                  type="checkbox"
+                  name="temporaryClosed"
+                  defaultChecked={restaurant.temporaryClosed}
+                  onChange={onChangeTemporaryClosed}
+                />
+              </div>
+            )}
             <div className="mt-10 d-flex">
               <div className="d-flex w-100">
                 <label className="d-block label-style" htmlFor="photo">
