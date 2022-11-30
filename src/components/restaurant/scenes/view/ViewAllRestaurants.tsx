@@ -11,7 +11,7 @@ const Restaurants = () => {
   useEffect(() => {
     getAll("restaurants").then((data) => {
       setLoading(false);
-      setRestaurants(data);
+      setRestaurants(data.filter((restaurant) => !restaurant.temporaryClosed));
     });
   }, []);
 
@@ -26,6 +26,8 @@ const Restaurants = () => {
         id={restaurant.id}
         name={restaurant.name}
         shortDescription={restaurant.shortDescription}
+        opensAt={restaurant.opensAt}
+        closesAt={restaurant.closesAt}
       />
     ));
   } else {
