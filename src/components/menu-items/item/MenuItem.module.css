@@ -1,0 +1,9 @@
+.image {
+  max-width: 200px;
+  max-height: 200px;
+}
+.containerItem {
+  background-color: #e9eef7;
+  border-radius: 15px;
+  padding: 30px;
+}

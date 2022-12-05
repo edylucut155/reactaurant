@@ -8,7 +8,7 @@ const Input = (props: {
     <div className="mt-10 d-flex">
       <div className="d-flex w-100">
         <label htmlFor={props.name} className="mr-10 label-style">
-          {props.name}
+          {props.label}
         </label>
       </div>
       <input
