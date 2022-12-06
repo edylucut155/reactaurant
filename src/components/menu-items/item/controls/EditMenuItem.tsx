@@ -45,7 +45,7 @@ const EditMenuItem = (props: {
       </button>
       <Modal isOpen={isModalOpen} close={modalCloseHandler}>
         <h2 className="title-style d-flex">Edit Menu Item</h2>
-        <MenuItemForm onSubmit={submitHandler} />
+        <MenuItemForm menuItem={props.item} onSubmit={submitHandler} />
       </Modal>
     </div>
   )
