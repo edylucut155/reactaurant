@@ -12,6 +12,7 @@ import ViewRestaurant from "./components/restaurant/scenes/view/ViewRestaurant"
 import EditRestaurant from "./components/restaurant/edit/EditRestaurant"
 import Restaurants from "./components/restaurant/scenes/view/ViewAllRestaurants"
 import ManageMenu from "./pages/manage-menu/ManageMenu"
+import ManageTables from "./pages/manage-tables/ManageTables"
 
 function App() {
   return (
@@ -73,6 +74,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <ManageMenu />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path={PagesPaths.MANAGE_TABLES}
+              element={
+                <ProtectedRoute>
+                  <ManageTables />
                 </ProtectedRoute>
               }
             />
