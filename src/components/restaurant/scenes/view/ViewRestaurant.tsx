@@ -5,6 +5,7 @@ import useFetchRestaurant from "../../../../hooks/FetchRestaurantHook";
 import LandingImage from "../../../../pages/landing/LandingImage";
 import "./ViewRestaurant.css";
 import MenuItemsList from "../../../menu-items/item-list/MenuItemsList";
+import TablesList from "../../../tables/table-list/TableList";
 
 const ViewRestaurant = () => {
   const { id } = useParams();
@@ -64,6 +65,10 @@ const ViewRestaurant = () => {
             </div>
             <div className="mt-10">
               <MenuItemsList withFetch={true} />
+            </div>
+            <div className="mt-10">
+              <h2>Tables</h2>
+              <TablesList withFetch={true}/>
             </div>
           </div>
         </div>

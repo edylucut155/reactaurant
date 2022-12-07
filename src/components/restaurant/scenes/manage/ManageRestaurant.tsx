@@ -46,6 +46,11 @@ const ManageRestaurant = () => {
                 Manage Menu
               </NavigateButton>
             </div>
+            <div className="mt-10">
+              <NavigateButton path={`/${PagesPaths.RESTAURANT}/${restaurantId}/manage-tables`}>
+                Manage Tables
+              </NavigateButton>
+            </div>
           </div>
         </div>
       </div>
