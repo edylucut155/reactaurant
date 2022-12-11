@@ -9,7 +9,7 @@ const RestaurantRow = (props: {
   shortDescription: string;
 }) => {
   return (
-    <div className="container-restaurant mt-10">
+    <div className="container-restaurant card">
       <LandingImage />
       <h2 className="title-style">{props.name}</h2>
       <p className="title-style">{props.shortDescription}</p>

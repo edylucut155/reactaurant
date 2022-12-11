@@ -4,25 +4,25 @@ import { useUserAuth } from "../../contexts/AuthContext";
 import { PagesPaths } from "../../pages/types";
 
 const LogoutButton = () => {
-    const { logOut } = useUserAuth();
-    const navigate  = useNavigate();
+  const { logOut } = useUserAuth();
+  const navigate = useNavigate();
 
-    const logOutHandler =  async() => {
-        try{
-            await logOut();
-            navigate(PagesPaths.LANDING);
-            alert("Logged out successfully")
-        }catch(err){
-            alert('couldnt log out');
-            console.log(err)
-        }
+  const logOutHandler = async () => {
+    try {
+      await logOut();
+      navigate(PagesPaths.LANDING);
+      alert("Logged out successfully");
+    } catch (err) {
+      alert("couldnt log out");
+      console.log(err);
     }
+  };
 
-    return(
-        <button className="btn btn-grad" onClick={logOutHandler}>
-            Log Out
-        </button>
-    )
-}
+  return (
+    <button className="btn btn-grad mt-10 mx-auto" onClick={logOutHandler}>
+      Log Out
+    </button>
+  );
+};
 
 export default LogoutButton;

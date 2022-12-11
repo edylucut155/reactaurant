@@ -5,49 +5,49 @@ import { fetchTables } from "../table/actions";
 import Table from "../table/Table";
 
 const TablesList = (props: {
-    tables?: DocumentData[];
-    withFetch: boolean;
-    onEdit?: Function;
-    onDelete?: Function;
+  tables?: DocumentData[];
+  withFetch: boolean;
+  onEdit?: Function;
+  onDelete?: Function;
 }) => {
-    const [loading, setLoading] = useState(true);
-    const [tables, setTables] = useState<DocumentData[]>([]);
-    const { id } = useParams();
+  const [loading, setLoading] = useState(true);
+  const [tables, setTables] = useState<DocumentData[]>([]);
+  const { id } = useParams();
 
-    useEffect(() => {
-        if (props.withFetch && id) {
-            fetchTables(id).then((data) => {
-                setLoading(false);
-                setTables(data);
-            })
-        }
-    }, []);
-
-    if (props.withFetch && loading) {
-        return <div className="mt-10">Loading...</div>
+  useEffect(() => {
+    if (props.withFetch && id) {
+      fetchTables(id).then((data) => {
+        setLoading(false);
+        setTables(data);
+      });
     }
+  }, []);
 
-    const tablesList = props.withFetch ? tables : props.tables;
+  if (props.withFetch && loading) {
+    return <div className="mt-10">Loading...</div>;
+  }
 
-    if(!tablesList || tablesList.length === 0) {
-        return <div className="mt-10">There are no tables added.</div>
-    }
+  const tablesList = props.withFetch ? tables : props.tables;
 
-    return (
-        <div className="mt-10">
-            {tablesList.map((table) => (
-                <Table
-                    key={table.id}
-                    id={table.id}
-                    name={table.name}
-                    capacity={table.capacity}
-                    withControls={!props.withFetch}
-                    onEdit={props.onEdit}
-                    onDelete={props.onDelete}
-                ></Table>
-            ))}
-        </div>
-    )
-}
+  if (!tablesList || tablesList.length === 0) {
+    return <div className="mt-10">There are no tables added.</div>;
+  }
+
+  return (
+    <div className="d-flex mt-10">
+      {tablesList.map((table) => (
+        <Table
+          key={table.id}
+          id={table.id}
+          name={table.name}
+          capacity={table.capacity}
+          withControls={!props.withFetch}
+          onEdit={props.onEdit}
+          onDelete={props.onDelete}
+        ></Table>
+      ))}
+    </div>
+  );
+};
 
 export default TablesList;
