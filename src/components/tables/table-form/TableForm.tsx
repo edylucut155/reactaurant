@@ -26,15 +26,27 @@ const TableForm = (props: {
 
   return (
     <form onSubmit={submitHandler}>
-        <div>
-            <Input name="name" type="text" label="Name" value={props.table?.name || ""}></Input>
-        </div>
-        <div className="mt-10">
-            <Input name="capacity" type="number" label="capacity" value={props.table?.capacity as unknown as string}></Input>
-        </div>
-        <div className="mt-10">
-            <button>{props.table ? "Save" : "Add"}</button>
-        </div>
+      <div>
+        <Input
+          name="name"
+          type="text"
+          label="Name"
+          value={props.table?.name || ""}
+        ></Input>
+      </div>
+      <div className="mt-10">
+        <Input
+          name="capacity"
+          type="number"
+          label="Capacity"
+          value={props.table?.capacity as unknown as string}
+        ></Input>
+      </div>
+      <div className="mt-10">
+        <button className="btn-grad mx-auto">
+          {props.table ? "Save" : "Add"}
+        </button>
+      </div>
     </form>
   );
 };

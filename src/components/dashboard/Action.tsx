@@ -33,6 +33,7 @@ const Action = () => {
   }, []);
 
   if (!action) return <div>Please wait ...</div>;
+
   return (
     <NavigateButton key={action.path} path={action.path}>
       {action.text}

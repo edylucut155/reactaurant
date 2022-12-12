@@ -8,7 +8,7 @@ const NavigateButton = (props: { children: string; path: string }) => {
   };
 
   return (
-    <button className="btn btn-grad" onClick={onClickHandler}>
+    <button className="btn btn-grad mx-auto" onClick={onClickHandler}>
       {props.children}
     </button>
   );

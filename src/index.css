@@ -93,6 +93,8 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  align-content: center;
+  flex-wrap: wrap;
 }
 
 .style-input {
@@ -168,7 +170,7 @@ input:focus {
   background-position: right center;
   color: #fff;
   text-decoration: none;
-  border: none;
+  border: 1px solid transparent;
 }
 
 .p-30 {
@@ -208,4 +210,30 @@ input[type="file"] {
 
 .m-0 {
   margin: 0px;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card {
+  background-color: white;
+  padding: 20px 10px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+}
+
+.card hr {
+  width: 90%;
+  border-top: 1px solid lightgray;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.pre-wrap {
+  white-space: pre-wrap;
 }

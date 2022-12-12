@@ -35,7 +35,7 @@ const Restaurants = () => {
   return (
     <div>
       <h1>Restaurants</h1>
-      {content}
+      <div className="d-flex">{content}</div>
     </div>
   );
 };

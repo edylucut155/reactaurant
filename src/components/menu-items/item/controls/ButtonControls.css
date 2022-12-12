@@ -12,13 +12,16 @@
   box-shadow: 0 0 20px #eee;
   border-radius: 10px;
   border: 1px solid transparent;
-  padding: 10px;
+  padding: 5px;
   cursor: pointer;
   display: flex;
   justify-content: center;
   text-transform: uppercase;
   font-family: inherit;
   font-weight: 800;
-  font-size: 16px;
-  width: 150px;
+  width: 100px;
+}
+
+.btn-controls:hover {
+  border: 1px solid transparent;
 }

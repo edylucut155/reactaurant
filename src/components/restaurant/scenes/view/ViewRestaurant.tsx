@@ -29,46 +29,44 @@ const ViewRestaurant = () => {
       <LandingImage />
       <div className="modal-well">
         <div className="mid-board">
-          <div className="container-image">
-            <img className="image-restaurant" src={restaurant.image} />
-          </div>
-          <h1 className="information-style m-0 text-black">
+          {restaurant.image ? (
+            <div className="container-image">
+              <img className="image-restaurant" src={restaurant.image} />
+            </div>
+          ) : null}
+          <h1>
             <i>{restaurant.name}</i>
           </h1>
-          <div className="container-information mb-0">
-            <h3 className="information-style mr-10">Short description: </h3>
-            <i>{restaurant.shortDescription}</i>
+          <div className="card">
+            <strong>About us</strong>
+            <hr />~ <i>{restaurant.shortDescription}</i> ~
+            <p className="text-justify">{restaurant.description}</p>
           </div>
-          <div className="container-information">
-            <h3 className="information-style mr-10">Description: </h3>
-            <i> {restaurant.description}</i>
-          </div>
-          <div className="container-information">
-            <h3 className="information-style mr-10">Working hours: </h3>
-            <i>
-              From {restaurant.opensAt} to {restaurant.closesAt}
-            </i>
-          </div>
-          <div className="mt-10">
-            <h2 className="text-black mb-0">Contact</h2>
-            <div className="container-information">
-              <h3 className="information-style mr-10">Phone:</h3>
-              {restaurant.address}
-            </div>
-            <div className="container-information">
-              <h3 className="information-style mr-10">Address:</h3>
-              {restaurant.phone}
-            </div>
-            <div className="container-information">
-              <h3 className="information-style mr-10">Email:</h3>
-              {restaurant.email}
+          <div className="card mt-10">
+            <strong>Contact</strong>
+            <hr />
+            Bussiness hours: {restaurant.opensAt} to {restaurant.closesAt}
+            <div className="mt-10">
+              <i className="fa fa-solid fa-phone mr-10" />
+              <a href={`tel:${restaurant.phone}`}>{restaurant.phone}</a>
             </div>
             <div className="mt-10">
+              <i className="fa fa-solid fa-envelope mr-10" />
+              <a href={`mailto:${restaurant.email}`}>{restaurant.email}</a>
+            </div>
+            <div className="mt-10">
+              <i className="fa fa-solid fa-location mr-10" />
+              <span>{restaurant.address}</span>
+            </div>
+          </div>
+          <div className="mt-10">
+            <div className="mt-10">
+              <h2>Menu</h2>
               <MenuItemsList withFetch={true} />
             </div>
             <div className="mt-10">
               <h2>Tables</h2>
-              <TablesList withFetch={true}/>
+              <TablesList withFetch={true} />
             </div>
           </div>
         </div>

@@ -11,12 +11,8 @@ const Dashboard = () => {
         <div className="mid-board">
           <Logo />
           <h1 className="title-style">Dashboard</h1>
-          <div className="d-flex">
-            <Action />
-          </div>
-          <div className="d-flex">
-            <LogoutButton />
-          </div>
+          <Action />
+          <LogoutButton />
         </div>
       </div>
     </div>

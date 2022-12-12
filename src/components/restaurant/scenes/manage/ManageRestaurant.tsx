@@ -28,29 +28,29 @@ const ManageRestaurant = () => {
       <div className="modal-well">
         <div className="mid-board">
           <h1 className="title-style">Manage Restaurant</h1>
-          <div className="d-flex">
-            <div className="mt-10">
-              <NavigateButton
-                path={`/${PagesPaths.RESTAURANT}/${restaurantId}`}
-              >
-                View Restaurant
-              </NavigateButton>
-            </div>
-            <div className="mt-10">
-              <NavigateButton path={`/${PagesPaths.EDIT_RESTAURANT}`}>
-                Edit Restaurant
-              </NavigateButton>
-            </div>
-            <div className="mt-10">
-              <NavigateButton path={`/${PagesPaths.RESTAURANT}/${restaurantId}/manage-menu`}>
-                Manage Menu
-              </NavigateButton>
-            </div>
-            <div className="mt-10">
-              <NavigateButton path={`/${PagesPaths.RESTAURANT}/${restaurantId}/manage-tables`}>
-                Manage Tables
-              </NavigateButton>
-            </div>
+          <div className="mt-10">
+            <NavigateButton path={`/${PagesPaths.RESTAURANT}/${restaurantId}`}>
+              View Restaurant
+            </NavigateButton>
+          </div>
+          <div className="mt-10">
+            <NavigateButton path={`/${PagesPaths.EDIT_RESTAURANT}`}>
+              Edit Restaurant
+            </NavigateButton>
+          </div>
+          <div className="mt-10">
+            <NavigateButton
+              path={`/${PagesPaths.RESTAURANT}/${restaurantId}/manage-menu`}
+            >
+              Manage Menu
+            </NavigateButton>
+          </div>
+          <div className="mt-10">
+            <NavigateButton
+              path={`/${PagesPaths.RESTAURANT}/${restaurantId}/manage-tables`}
+            >
+              Manage Tables
+            </NavigateButton>
           </div>
         </div>
       </div>
