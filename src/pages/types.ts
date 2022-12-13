@@ -8,5 +8,8 @@ export enum PagesPaths {
   RESTAURANT = "restaurant",
   RESTAURANTS = "restaurants",
   MANAGE_MENU = "restaurant/:id/manage-menu",
-  MANAGE_TABLES = "restaurant/:id/manage-tables"
+  MANAGE_TABLES = "restaurant/:id/manage-tables",
+  RESERVE_TABLE = "tables/:id/reserve",
+  RESERVATION = "reservations/:id",
+  RESERVATIONS = "reservations",
 }
