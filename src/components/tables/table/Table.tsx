@@ -2,6 +2,9 @@ import React from "react";
 import Chairs from "./Chairs";
 import TableControls from "./controls/TableControls";
 import classes from "./Table.module.css";
+import NavigateButton from "../../../lib/navigate-button/NavigateButton";
+import useUserDetails from "../../../hooks/UserDetailsHook";
+import { UserTypes } from "../../auth/types";
 
 const Table = (props: {
   id: string;
@@ -12,6 +15,9 @@ const Table = (props: {
   onDelete?: Function;
 }) => {
   const { id, name, capacity } = props;
+  const { getCurrentUserDetails } = useUserDetails();
+  const userDetails = getCurrentUserDetails();
+  const isClient = userDetails.type === UserTypes.CLIENT;
 
   const tableWidth = 200;
   let chairFontSize = 40;
@@ -58,6 +64,11 @@ const Table = (props: {
           />
         </>
       )}
+      {isClient ? (
+        <NavigateButton path={`/tables/${id}/reserve`} isSmall={true}>
+          Reserve
+        </NavigateButton>
+      ) : null}
     </div>
   );
 };

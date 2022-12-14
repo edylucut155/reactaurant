@@ -9,6 +9,7 @@ import {
   doc,
   setDoc,
   deleteDoc,
+  WhereFilterOp,
 } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { db, storage } from ".";
@@ -22,10 +23,12 @@ export const add = async (collectionName: string, data: object) => {
 export const whereQuery = async (
   collectionName: string,
   field: string,
-  value: string
+  // Added after the live course: string[] type
+  value: string | string[],
+  operator: WhereFilterOp = "=="
 ) => {
   return getDocs(
-    query(collection(db, collectionName), where(field, "==", value))
+    query(collection(db, collectionName), where(field, operator, value))
   ).then((querySnapshot) => {
     let results: DocumentData[] = [];
     querySnapshot.forEach((doc) => {
@@ -86,4 +89,4 @@ export const getAll = async (collectionName: string) => {
 
 export const remove = async (collectionName: string, documentId: string) => {
   return deleteDoc(doc(db, collectionName, documentId));
-}
+};

@@ -9,6 +9,9 @@ const MenuItemsList = (props: {
   withFetch: boolean;
   onEdit?: Function;
   onDelete?: Function;
+  restaurantId?: string;
+  onAdd?: Function;
+  onRemove?: Function;
 }) => {
   const [menuItems, setMenuItems] = useState<DocumentData[]>([]);
 
@@ -16,8 +19,9 @@ const MenuItemsList = (props: {
   const { id } = useParams();
 
   useEffect(() => {
-    if (props.withFetch && id) {
-      fetchMenuItems(id).then((data) => {
+    const restId = props.restaurantId || id;
+    if (props.withFetch && restId) {
+      fetchMenuItems(restId).then((data) => {
         setMenuItems(data);
         setLoading(false);
       });
@@ -51,6 +55,8 @@ const MenuItemsList = (props: {
             withControls={!props.withFetch}
             onEdit={props.onEdit}
             onDelete={props.onDelete}
+            onAdd={props.onAdd}
+            onRemove={props.onRemove}
           />
         ))}
     </div>

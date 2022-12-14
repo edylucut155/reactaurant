@@ -13,6 +13,8 @@ const MenuItem = (props: {
   withControls?: boolean;
   onEdit?: Function;
   onDelete?: Function;
+  onAdd?: Function;
+  onRemove?: Function;
 }) => {
   const { id, name, image, price, description, ingredients, category } = props;
   return (
@@ -36,6 +38,32 @@ const MenuItem = (props: {
           item={{ id, name, price, description, ingredients, category }}
         />
       )}
+      <div className="d-flex">
+        {props.onAdd ? (
+          <button
+            type="button"
+            className="btn-controls"
+            onClick={() => {
+              if (!props.onAdd) return;
+              props.onAdd({ id, price, name });
+            }}
+          >
+            Add
+          </button>
+        ) : null}
+        {props.onRemove ? (
+          <button
+            type="button"
+            className="btn-controls"
+            onClick={() => {
+              if (!props.onRemove) return;
+              props.onRemove(id);
+            }}
+          >
+            Remove
+          </button>
+        ) : null}
+      </div>
     </div>
   );
 };
